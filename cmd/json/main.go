@@ -29,9 +29,9 @@ func main() {
 	str := string(dat)
 	lexer := NewLexer(str)
 	parser := NewParser(lexer)
-	json := parser.ParseJSON()
-	if json == nil {
-		log.Fatal("Error parsing JSON")
+	json, err := parser.ParseJSON()
+	if err != nil {
+		log.Fatal(err)
 	}
 	fmt.Printf("%s\n", json.String())
 }
