@@ -26,12 +26,12 @@ func (a analyser) registerFileFunc(flag string, fn AnalyserFunc) {
 func (a analyser) run(flag string, reader io.Reader) (string, error) {
 	fn, ok := a.fileFuncs[flag]
 	if !ok {
-		return "", fmt.Errorf("Invalid flag:", flag)
+		return "", fmt.Errorf("Invalid flag: %s", flag)
 	}
 
 	numString, err := fn(reader)
 	if err != nil {
-		return "", fmt.Errorf("Error running function:", err)
+		return "", fmt.Errorf("Error running function: %w", err)
 	}
 	return numString, nil
 }

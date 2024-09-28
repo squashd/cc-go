@@ -39,7 +39,7 @@ func countFileAll(reader io.Reader) (string, error) {
 	wg.Wait()
 
 	if len(errs) > 0 {
-		return "", fmt.Errorf("Error running functions:", errs)
+		return "", fmt.Errorf("Error running functions: %w", errs[0])
 	}
 
 	formatted := fmt.Sprintf("%s %s %s", lines, words, chars)
