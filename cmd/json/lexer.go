@@ -86,6 +86,7 @@ func isLetter(ch byte) bool {
 }
 
 func (l *Lexer) readNumber() (bool, string) {
+	// TODO: handle negative numbers, identify illegal numbers (?)
 	var maybeFloat bool
 	position := l.position
 	for isDigit(l.ch) {
